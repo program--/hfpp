@@ -3,7 +3,7 @@
 #include <unordered_set>
 #include <stdexcept>
 
-#include "catchment.hpp"
+#include "catchment/definition.hpp"
 
 namespace hf {
 
