@@ -3,14 +3,20 @@ name: Unit Testing
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - "README.md"
-      - ".vscode/**"
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "include/**"
+      - "cmake/**"
+      - "CMakeLists.txt"
   pull_request:
     branches: [main]
-    paths-ignore:
-      - "README.md"
-      - ".vscode/**"
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "include/**"
+      - "cmake/**"
+      - "CMakeLists.txt"
 
 jobs:
   build:
