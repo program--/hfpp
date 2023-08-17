@@ -3,8 +3,14 @@ name: Unit Testing
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "README.md"
+      - ".vscode/**"
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "README.md"
+      - ".vscode/**"
 
 jobs:
   build:
@@ -79,6 +85,7 @@ jobs:
           OS: ${{ matrix.config.os }}
         uses: codecov/codecov-action@v3
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./report.json
           env_vars: OS
           flags: unittests
