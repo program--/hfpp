@@ -2,7 +2,8 @@
 
 [![unit tests](https://github.com/program--/hfpp/actions/workflows/unit_tests.yaml/badge.svg)](https://github.com/program--/hfpp/actions/workflows/unit_tests.yaml)
 [![codecov](https://codecov.io/gh/program--/hfpp/graph/badge.svg?token=0G5JI2D57V)](https://codecov.io/gh/program--/hfpp)
-
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+ 
 This repository contains a C++14 hydrofabric modeling implementation. This implementation takes inspiration from the [OGC WaterML HY_Features Model](https://docs.ogc.org/is/14-111r6/14-111r6.html) and the [Applications of HY_Features Engineering Report](https://docs.ogc.org/per/22-040.html) to represent a hydrofabric efficiently, but does not directly implement the HY_Features model.
 
 ## Getting Started
