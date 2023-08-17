@@ -1,6 +1,33 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.14...3.26)
 
-project(hfpp VERSION 0.1.0 LANGUAGES CXX)
+project(hfpp
+        VERSION      0.1.0
+        DESCRIPTION  "Hydrofabric Modeling Library"
+        HOMEPAGE_URL "https://github.com/program--/hfpp"
+        LANGUAGES    CXX)
 
-add_library(hfpp INTERFACE)
-target_include_directories(hfpp INTERFACE include)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+
+include(hfppMacros)
+
+set(HFPP_SOURCE
+    # Catchment
+    src/hfpp/catchment/definition.cpp
+    src/hfpp/catchment/builder.cpp
+    src/hfpp/catchment/proxy.cpp
+
+    # Nexus
+    src/hfpp/nexus/definition.cpp
+    src/hfpp/nexus/proxy.cpp
+    
+)
+
+add_library(hfpp ${HFPP_SOURCE})
+target_include_directories(hfpp PUBLIC include)
+target_debug_extra(hfpp)
+target_compile_strict_cxx14(hfpp)
+
+include(CTest)
+if((PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME) AND BUILD_TESTING)
+    add_subdirectory("tests")
+endif()
