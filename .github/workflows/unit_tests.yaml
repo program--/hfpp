@@ -68,11 +68,11 @@ jobs:
         run: ctest --build-config ${{ matrix.config.build_type }}
 
       - name: Coverage
-        if: ${{ matrix.config.cpp_compiler }} == 'g++'
+        if: ${{ matrix.config.cpp_compiler == 'g++' }}
         run: gcovr --coveralls report.json -r . .
 
       - name: Upload Report
-        if: ${{ matrix.config.cpp_compiler }} == 'g++'
+        if: ${{ matrix.config.cpp_compiler == 'g++' }}
         env:
           OS: ${{ matrix.config.os }}
         uses: codecov/codecov-action@v3
