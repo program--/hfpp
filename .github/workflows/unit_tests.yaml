@@ -47,7 +47,7 @@ jobs:
         shell: bash
         run: |
           echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
-          echo "compiler-flags=-fsanitize=address,undefined,leak -O1 -g -fno-omit-frame-pointer" >> "$GITHUB_OUTPUT"
+          echo "compiler-flags=-fsanitize=address,undefined -O1 -g -fno-omit-frame-pointer --coverage" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake
         env:
@@ -66,3 +66,19 @@ jobs:
       - name: Test
         working-directory: ${{ steps.strings.outputs.build-output-dir }}
         run: ctest --build-config ${{ matrix.config.build_type }}
+
+      - name: Coverage
+        if: ${{ matrix.config.cpp_compiler }} == 'g++'
+        run: gcovr --coveralls report.json -r . .
+
+      - name: Upload Report
+        if: ${{ matrix.config.cpp_compiler }} == 'g++'
+        env:
+          OS: ${{ matrix.config.os }}
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./report.json
+          env_vars: OS
+          flags: unittests
+          verbose: true
+          fail_ci_if_error: true
