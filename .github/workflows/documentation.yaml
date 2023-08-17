@@ -9,6 +9,7 @@ on:
       - "include/**"
       - "docs/**"
       - "README.md"
+  workflow_dispatch:
 
 jobs:
   build:
