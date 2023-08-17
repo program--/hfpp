@@ -69,7 +69,9 @@ jobs:
 
       - name: Coverage
         if: ${{ matrix.config.cpp_compiler == 'g++' }}
-        run: gcovr --coveralls report.json -r . .
+        run: |
+          pip install gcovr
+          gcovr -s --coveralls report.json
 
       - name: Upload Report
         if: ${{ matrix.config.cpp_compiler == 'g++' }}
