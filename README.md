@@ -51,7 +51,7 @@ cd build
 make test
 ```
 
-This library uses [doctest]() as the unit testing framework. If you would like to run the doctest-based test runner instead of CTest, enter the `build` directory and run:
+This library uses [doctest](github.com/doctest/doctest) as the unit testing framework. If you would like to run the doctest-based test runner instead of CTest, enter the `build` directory and run:
 
 ```
 ./tests/hfpp_tests
