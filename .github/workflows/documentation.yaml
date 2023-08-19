@@ -8,6 +8,7 @@ on:
       - "tests/**"
       - "docs/**"
       - "README.md"
+      - "Doxyfile"
   workflow_dispatch:
 
 jobs:
