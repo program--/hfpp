@@ -22,6 +22,8 @@ CheckOptions:
     value: "1"
   - key: cppcoreguidelines-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic
     value: "1"
+  - key: cppcoreguidelines-avoid-do-while.IgnoreMacros
+    value: true
   - key: modernize-loop-convert.MaxCopySize
     value: "16"
   - key: modernize-loop-convert.MinConfidence

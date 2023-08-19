@@ -1,11 +1,9 @@
 #pragma once
 
-#include <memory>
+#include <immer/memory_policy.hpp>
 #include <string>
 
-#include <immer/box.hpp>
-#include <immer/set.hpp>
-#include <immer/vector_transient.hpp>
+#include <hfpp/detail/types.hpp>
 
 #include <hfpp/detail/catchment/fwd.hpp>
 #include <hfpp/detail/nexus/fwd.hpp>
@@ -19,9 +17,9 @@ namespace hf {
  */
 struct catchment
 {
-    using catchment_list  = immer::vector_transient<immer::box<catchment>>;
-    using nexus_list      = immer::vector_transient<immer::box<nexus>>;
-    using realization_set = immer::set<std::unique_ptr<realization>>;
+    using catchment_list  = hf::proxy_set<catchment>;
+    using nexus_list      = hf::proxy_set<nexus>;
+    using realization_set = hf::polymorphic_set<realization>;
 
     catchment()           = default;
 
@@ -87,6 +85,12 @@ struct catchment
      */
     bool is_dendritic() const noexcept;
 
+    bool operator==(const catchment& cat) const noexcept;
+    bool operator!=(const catchment& cat) const noexcept;
+
+    bool operator==(const std::string& id) const noexcept;
+    bool operator!=(const std::string& id) const noexcept;
+
   private:
     friend factory::catchment_builder;
 
@@ -99,3 +103,16 @@ struct catchment
 };
 
 } // namespace hf
+
+namespace std {
+
+template<>
+struct hash<hf::catchment>
+{
+    inline size_t operator()(const hf::catchment& cat)
+    {
+        return hash<std::string>{}(cat.id());
+    }
+};
+
+} // namespace std

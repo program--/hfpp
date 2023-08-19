@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include <algorithm>
 
 #include <hfpp/detail/catchment/definition.hpp>
 #include <hfpp/detail/nexus/definition.hpp>
@@ -24,7 +23,7 @@ struct catchment_builder
      *
      * @return catchment
      */
-    catchment get() const noexcept;
+    catchment get() noexcept;
 
     /**
      * @brief Get a (const) reference to the catchment

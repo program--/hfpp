@@ -22,6 +22,11 @@ struct nexus
     const catchment_list& downstream() const noexcept;
     const catchment_list& upstream() const noexcept;
 
+    bool                  operator==(const nexus& nex) const noexcept;
+    bool                  operator!=(const nexus& nex) const noexcept;
+    bool                  operator==(const std::string& id) const noexcept;
+    bool                  operator!=(const std::string& id) const noexcept;
+
   private:
     friend factory::nexus_builder;
 
@@ -31,3 +36,16 @@ struct nexus
 };
 
 } // namespace hf
+
+namespace std {
+
+template<>
+struct hash<hf::nexus>
+{
+    inline size_t operator()(const hf::nexus& cat)
+    {
+        return hash<std::string>{}(cat.id());
+    }
+};
+
+} // namespace std

@@ -16,3 +16,23 @@ const nexus::catchment_list& nexus::upstream() const noexcept
 {
     return upstream_;
 }
+
+bool nexus::operator==(const nexus& nex) const noexcept
+{
+    return id_ == nex.id_;
+}
+
+bool nexus::operator!=(const nexus& nex) const noexcept
+{
+    return id_ != nex.id_;
+}
+
+bool nexus::operator==(const std::string& id) const noexcept
+{
+    return id_ == id;
+}
+
+bool nexus::operator!=(const std::string& id) const noexcept
+{
+    return id_ != id;
+}
