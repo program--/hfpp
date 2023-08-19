@@ -4,9 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "src/**"
+      - "lib/**"
       - "tests/**"
-      - "include/**"
       - "docs/**"
       - "README.md"
   workflow_dispatch:
