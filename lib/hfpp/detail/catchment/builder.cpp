@@ -2,9 +2,6 @@
 
 using builder = hf::factory::catchment_builder;
 
-builder::catchment_builder() noexcept
-  : instance_(catchment{}){};
-
 hf::catchment builder::get() const noexcept
 {
     return instance_;

@@ -11,7 +11,7 @@ namespace factory {
 
 struct catchment_builder
 {
-    catchment_builder() noexcept;
+    catchment_builder() noexcept = default;
 
     catchment_builder& with_id(const std::string& id);
     catchment_builder& with_downstream(catchment& catchment);

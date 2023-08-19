@@ -4,7 +4,7 @@
 
 #include <immer/set.hpp>
 
-#include "catchment/detail/definition.hpp"
+#include "detail/catchment/definition.hpp"
 
 namespace hf {
 
@@ -42,7 +42,7 @@ struct fabric
      */
     static fabric& instance()
     {
-        if (!instance_) {
+        if (instance_ == nullptr) {
             if (destroyed_) {
                 handle_dead_ref();
             } else {
@@ -61,8 +61,8 @@ struct fabric
     immer::set<catchment> catchments_;
     immer::set<nexus>     nexuses_;
 
-    // Prevent default construction
-    fabric();
+    // Prevent public default construction
+    fabric() = default;
 
     // Destructor
     ~fabric()
