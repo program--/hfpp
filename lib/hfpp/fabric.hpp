@@ -1,9 +1,10 @@
 #pragma once
 
-#include <unordered_set>
 #include <stdexcept>
 
-#include "catchment/definition.hpp"
+#include <immer/set.hpp>
+
+#include "catchment/detail/definition.hpp"
 
 namespace hf {
 
@@ -57,7 +58,8 @@ struct fabric
     static bool    destroyed_;
 
     // Set of catchments contained within this fabric
-    std::unordered_set<catchment> catchments_;
+    immer::set<catchment> catchments_;
+    immer::set<nexus>     nexuses_;
 
     // Prevent default construction
     fabric();

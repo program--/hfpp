@@ -1,8 +1,6 @@
-#include <hfpp/catchment/definition.hpp>
-#include <hfpp/catchment/proxy.hpp>
+#include <hfpp/detail/nexus/definition.hpp>
 
-#include <hfpp/nexus/definition.hpp>
-#include <hfpp/nexus/proxy.hpp>
+#include "definition.hpp"
 
 using catchment = hf::catchment;
 

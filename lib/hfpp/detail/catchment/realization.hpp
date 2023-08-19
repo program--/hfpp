@@ -1,6 +1,6 @@
 #pragma once
 
-#include <hfpp/realization/definition.hpp>
+#include <hfpp/detail/realization/definition.hpp>
 
 namespace hf {
 

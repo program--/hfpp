@@ -1,11 +1,13 @@
 #pragma once
 
 #include <string>
-#include <vector>
 
-#include <hfpp/nexus/fwd.hpp>
+#include <immer/vector_transient.hpp>
+#include <immer/box.hpp>
 
-#include <hfpp/catchment/proxy.hpp>
+#include <hfpp/detail/catchment/fwd.hpp>
+
+#include "fwd.hpp"
 
 namespace hf {
 
@@ -14,7 +16,7 @@ namespace hf {
  */
 struct nexus
 {
-    using catchment_list = std::vector<detail::catchment_proxy>;
+    using catchment_list = immer::vector_transient<immer::box<catchment>>;
 
     const std::string&    id() const noexcept;
     const catchment_list& downstream() const noexcept;

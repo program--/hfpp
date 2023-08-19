@@ -1,14 +1,16 @@
 #pragma once
 
-#include <vector>
-#include <unordered_set>
 #include <memory>
 #include <string>
 
-#include <hfpp/catchment/proxy.hpp>
-#include <hfpp/catchment/realization.hpp>
+#include <immer/box.hpp>
+#include <immer/set.hpp>
+#include <immer/vector_transient.hpp>
 
-#include <hfpp/nexus/proxy.hpp>
+#include <hfpp/detail/catchment/fwd.hpp>
+#include <hfpp/detail/nexus/fwd.hpp>
+
+#include <hfpp/detail/catchment/realization.hpp>
 
 namespace hf {
 
@@ -17,9 +19,9 @@ namespace hf {
  */
 struct catchment
 {
-    using catchment_list  = std::vector<detail::catchment_proxy>;
-    using nexus_list      = std::vector<detail::nexus_proxy>;
-    using realization_set = std::unordered_set<std::unique_ptr<realization>>;
+    using catchment_list  = immer::vector_transient<immer::box<catchment>>;
+    using nexus_list      = immer::vector_transient<immer::box<nexus>>;
+    using realization_set = immer::set<std::unique_ptr<realization>>;
 
     catchment()           = default;
 

@@ -1,5 +1,4 @@
-#include <hfpp/catchment/builder.hpp>
-#include <hfpp/catchment/proxy.hpp>
+#include "builder.hpp"
 
 using builder = hf::factory::catchment_builder;
 
@@ -30,24 +29,24 @@ builder& builder::with_id(const std::string& id)
 
 builder& builder::with_downstream(catchment& catchment)
 {
-    instance_.downstream_.emplace_back(catchment);
+    instance_.downstream_.push_back(catchment);
     return *this;
 }
 
 builder& builder::with_upstream(catchment& catchment)
 {
-    instance_.upstream_.emplace_back(catchment);
+    instance_.upstream_.push_back(catchment);
     return *this;
 }
 
 builder& builder::with_inflow(nexus& nexus)
 {
-    instance_.inflow_.emplace_back(nexus);
+    instance_.inflow_.push_back(nexus);
     return *this;
 }
 
 builder& builder::with_outflow(nexus& nexus)
 {
-    instance_.outflow_.emplace_back(nexus);
+    instance_.outflow_.push_back(nexus);
     return *this;
 }

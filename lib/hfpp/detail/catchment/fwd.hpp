@@ -6,8 +6,6 @@ struct catchment;
 
 namespace detail {
 
-struct catchment_proxy;
-
 struct catchment_realization;
 
 } // namespace detail

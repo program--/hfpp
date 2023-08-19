@@ -10,22 +10,14 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
 include(hfppMacros)
 
-set(HFPP_SOURCE
-    # Catchment
-    src/hfpp/catchment/definition.cpp
-    src/hfpp/catchment/builder.cpp
-    src/hfpp/catchment/proxy.cpp
+find_package(immer REQUIRED)
 
-    # Nexus
-    src/hfpp/nexus/definition.cpp
-    src/hfpp/nexus/proxy.cpp
-    
-)
-
-add_library(hfpp ${HFPP_SOURCE})
-target_include_directories(hfpp PUBLIC include)
+add_library(hfpp)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/lib/hfpp)
+target_include_directories(hfpp PUBLIC ${CMAKE_CURRENT_LIST_DIR}/lib)
 target_debug_extra(hfpp)
 target_compile_strict_cxx14(hfpp)
+target_link_libraries(hfpp immer)
 
 include(CTest)
 if((PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME) AND BUILD_TESTING)

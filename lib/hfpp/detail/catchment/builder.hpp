@@ -3,8 +3,8 @@
 #include <string>
 #include <algorithm>
 
-#include <hfpp/catchment/definition.hpp>
-#include <hfpp/nexus/definition.hpp>
+#include <hfpp/detail/catchment/definition.hpp>
+#include <hfpp/detail/nexus/definition.hpp>
 
 namespace hf {
 namespace factory {

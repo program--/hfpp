@@ -1,4 +1,4 @@
-#include <hfpp/nexus/definition.hpp>
+#include "definition.hpp"
 
 using nexus = hf::nexus;
 
